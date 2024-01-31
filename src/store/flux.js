@@ -5,8 +5,22 @@
  */
 const getStore = ({ getStore, getActions, setStore }) => {
     return {
-        store: {},
-        actions: {}
+        store: {
+
+            people: [],
+            planets: [],
+            vehicles: [],
+            favorites: []
+
+
+        },
+        actions: {
+
+
+
+
+            
+        }
     }
 }
 
