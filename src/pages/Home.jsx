@@ -6,9 +6,9 @@ const Home = () => {
     const { store, actions } = useContext
 
     useEffect(() => {
-        actions.getpeople();
-        actions - getplanets();
-        actions.getvehicles();
+        actions.getpeople()
+        actions.getplanets()
+        actions.getvehicles()
     }, [])
 
     return (

@@ -29,15 +29,15 @@ const injectContext = PassedComponent => {
             // al momento de cargar la pagina web por primera vez
 
             // state.actions.getUsers()
-            
-           /*  state.actions.getpeople();
-            state.actions - getplanets();
-            state.actions.getvehicles();
-            state.actions.getPeopleDetails();
-            state.actions.getPlanetsDetails();
-            state.actiones.getVehiclesDetails(); */
 
-        }, [])
+            state.actions.getpeople()
+            state.actions.getplanets()
+            state.actions.getvehicles()
+            state.actions.getPeopleDetails()
+            state.actions.getPlanetsDetails()
+            state.actiones.getVehiclesDetails()
+
+        }, []);
 
         return (
             <Context.Provider value={state}>
