@@ -46,8 +46,8 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/detailedpeople/:id' element={<DetailedPeople />}/>
-                    <Route path='/detailedplanets/:url' element={<DetailedPlanets />}/>
-                    <Route path='/detailedvehicles/:url' element={<DetailedVehicles />}/>
+                    <Route path='/detailedplanets/:id' element={<DetailedPlanets />}/>
+                    <Route path='/detailedvehicles/:id' element={<DetailedVehicles />}/>
                 </Routes>
             </BrowserRouter>
         </>

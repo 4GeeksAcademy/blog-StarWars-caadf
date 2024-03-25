@@ -3,20 +3,29 @@ import { useParams } from 'react-router-dom'
 import { Context } from '../store/AppContext';
 
 
-const DetailedVehicles= () => {
+const DetailedVehicles = () => {
 
     const { store, actions } = useContext(Context)
-    let { url } = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-       actions.getDetailsVehicles(url)
-       console.log(url)
-    }, [])
+        actions.getDetailsVehicles(id)
+        console.log(id)
+    }, [id])
 
+    const { name, model, manufacturer, length, crew, cargo_capacity } =
+        store.detailedvehicles;
     return (
         <>
-            <h1>{store?.details?.name}</h1>
-            
+            {/*   <h1>{store?.details?.name}</h1> */}
+            <div className="card-body text-center">
+                <h1 className="card-title mb-5">{name}</h1>
+                <p className="card-text">Manufacturer: {manufacturer}</p>
+                <p className="card-text">Length: {length}</p>
+                <p className="card-text">Crew: {crew}</p>
+                <p className="card-text">Model: {model}</p>
+                <p className="card-text">Cargo_capacity: {cargo_capacity}</p>
+            </div>
 
         </>
     )

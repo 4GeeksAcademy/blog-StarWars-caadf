@@ -19,8 +19,8 @@ const DetailedPeople = () => {
     return (
         <>
            {/*  <h1>{store?.details?.name}</h1> */}
-            <div className="card-body">
-        <h1 className="card-title">{name}</h1>
+            <div className="card-body text-center">
+        <h1 className="card-title mb-5">{name}</h1>
         <p className="card-text">Height: {height}</p>
         <p className="card-text">Mass: {mass}</p>
         <p className="card-text">Hair Color: {hair_color}</p>

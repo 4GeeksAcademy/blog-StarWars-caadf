@@ -10,7 +10,9 @@ const getStore = ({ getStore, getActions, setStore }) => {
             planets: null,
             vehicles: null,
             favorites: [] ,
-            detailedpeople: []
+            detailedpeople: [],
+            detailedplanets: [],
+            detailedvehicles: [],
         },
         actions: {
             getPeople: () => {
@@ -34,17 +36,17 @@ const getStore = ({ getStore, getActions, setStore }) => {
                 .then(response => response.json())
                 .then(datos => setStore({ detailedpeople: datos }))
             },
-            getDetailsPlanets: (url) => {
-                let urls = "https://swapi.dev/api/planets/" + url
+            getDetailsPlanets: (id) => {
+                let urls = "https://swapi.dev/api/planets/" + id
                 fetch(urls)
                 .then(response => response.json())
-                .then(datos => setStore({ details: datos }))
+                .then(datos => setStore({ detailedplanets: datos }))
             },
-            getDetailsVehicles: (url) => {
-                let urls = "https://swapi.dev/api/vehicles/" + url
+            getDetailsVehicles: (id) => {
+                let urls = "https://swapi.dev/api/vehicles/" + id
                 fetch(urls)
                 .then(response => response.json())
-                .then(datos => setStore({ details: datos }))
+                .then(datos => setStore({ detailedvehicles: datos }))
             },
             addFavorites: (name , index) => {
                 const newFavorite = {name,index}

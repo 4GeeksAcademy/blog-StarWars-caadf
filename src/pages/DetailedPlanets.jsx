@@ -6,17 +6,27 @@ import { Context } from '../store/AppContext';
 const DetailedPlanets = () => {
 
     const { store, actions } = useContext(Context)
-    let { url } = useParams()
+    const { id } = useParams()
 
     useEffect(() => {
-       actions.getDetailsPlanets(url)
-       console.log(url)
-    }, [])
+       actions.getDetailsPlanets(id)
+       console.log(id)
+    }, [id])
+
+    const { name, diameter, climate, gravity, terrain, population } =
+    store.detailedplanets;
 
     return (
         <>
-            <h1>{store?.details?.name}</h1>
-            
+           {/*  <h1>{store?.details?.name}</h1> */}
+            <div className="card-body text-center">
+        <h1 className="card-title mb-5">{name}</h1>
+        <p className="card-text">Diameter: {diameter}</p>
+        <p className="card-text">Climate: {climate}</p>
+        <p className="card-text">Gravity: {gravity}</p>
+        <p className="card-text">Terrain: {terrain}</p>
+        <p className="card-text">Population: {population}</p>
+      </div>
 
         </>
     )
