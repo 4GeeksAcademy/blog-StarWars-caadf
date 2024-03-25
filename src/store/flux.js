@@ -6,65 +6,58 @@
 const getStore = ({ getStore, getActions, setStore }) => {
     return {
         store: {
-
-            people: [],
-            planets: [],
-            vehicles: [],
-            favorites: []
-
-
+            people: null,
+            planets: null,
+            vehicles: null,
+            favorites: [] ,
+            detailedpeople: []
         },
         actions: {
-
-            /* 
-            fetch de people, planets, vehicles y add favorites */
-
-            getpeople: () => {
+            getPeople: () => {
                 fetch("https://swapi.dev/api/people/")
                     .then(response => response.json())
-                    .then (data=>{
-                        console.log(data.results)
-                        setStore({people:data.results})
-                    })
-                },
-
-
+                    .then(datos => setStore({ people: datos }))
             },
-            getplanets: () => {
+            getPlanets: () => {
                 fetch("https://swapi.dev/api/planets/")
                     .then(response => response.json())
-                    .then (data=>{
-                        console.log(data.results)
-                        setStore({planets:data.results})
-                    })
-                },
-
-            getvehicles: () => {
+                    .then(datos => setStore({ planets: datos }))
+            },
+            getVehicles: () => {
                 fetch("https://swapi.dev/api/vehicles/")
                     .then(response => response.json())
-                    .then (data=>{
-                        console.log(data.results)
-                        setStore({vehicles:data.results})
-                    })
-                },
-
-            getPeopleDetails: () => {
-                const store = getStore(); /* acceder a un atributo */
-                    fetch(`https://swapi.dev/api/people/`).then(resp => resp.json())
-                     .then(data => { (data) })
+                    .then(datos => setStore({ vehicles: datos }))
             },
-            getPlanetsDetails: () => {
-                const store = getStore(); 
-                    fetch(`https://swapi.dev/api/planets/`).then(resp => resp.json())
-                     .then(data => { (data) })
+            getDetailsPeople: (id) => {
+                let urls = "https://swapi.dev/api/people/" + id
+                fetch(urls)
+                .then(response => response.json())
+                .then(datos => setStore({ detailedpeople: datos }))
             },
-            getVehiclesDetails: () => {
-                const store = getStore(); 
-                    fetch(`https://swapi.dev/api/vehicles/`).then(resp => resp.json())
-                     .then(data => { (data) })
+            getDetailsPlanets: (url) => {
+                let urls = "https://swapi.dev/api/planets/" + url
+                fetch(urls)
+                .then(response => response.json())
+                .then(datos => setStore({ details: datos }))
+            },
+            getDetailsVehicles: (url) => {
+                let urls = "https://swapi.dev/api/vehicles/" + url
+                fetch(urls)
+                .then(response => response.json())
+                .then(datos => setStore({ details: datos }))
+            },
+            addFavorites: (name , index) => {
+                const newFavorite = {name,index}
+                const favoritos = getStore()
+                const newFavorites = [...favoritos.favorites, newFavorite]
+                setStore({favorites: newFavorites})
+            },
+            deleteFavorites: (index) => {
+                const favoritos = getStore()
+                setStore({favorites: favoritos.favorites.toSpliced(index,1)})
             },
         }
     }
 }
 
-    export default getStore
+export default getStore

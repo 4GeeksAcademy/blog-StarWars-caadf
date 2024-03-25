@@ -19,7 +19,7 @@ const injectContext = PassedComponent => {
             getActions: () => state.actions,
             setStore: (updateStore) => setState({
                 store: Object.assign(state.store, updateStore),
-                actions: { ...state.actions }
+                actions: {...state.actions}
             })
         }))
 
@@ -30,14 +30,7 @@ const injectContext = PassedComponent => {
 
             // state.actions.getUsers()
 
-            state.actions.getpeople()
-            state.actions.getplanets()
-            state.actions.getvehicles()
-            state.actions.getPeopleDetails()
-            state.actions.getPlanetsDetails()
-            state.actiones.getVehiclesDetails()
-
-        }, []);
+        }, [])
 
         return (
             <Context.Provider value={state}>
